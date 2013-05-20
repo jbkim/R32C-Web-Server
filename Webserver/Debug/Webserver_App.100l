@@ -1,0 +1,16 @@
+-L "nc100lib"
+-G
+-MS
+-O "E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\Webserver_App.x30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\ncrt0.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\dhcp.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\HTTPD.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\hwsetup.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\main.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\md5.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\OLED28.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\ROMFS.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\searchfile.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\socket.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\w5100.r30"
+"E:\repository\09xxxx\090928\firmware\V130\Webserver\Debug\webserver.r30"

@@ -1,0 +1,303 @@
+[HIMDBVersion]
+2.0
+[DATABASE_VERSION]
+"2.8" 
+[PROJECT_DETAILS]
+"Webserver_App" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\webserver.hwp" "R32C/100" "Renesas R32C/100 Standard" "Application" "R32C/100" "R32C/118" 
+[INFORMATION]
+"No project information available" 
+[TOOL_CHAIN]
+"Renesas R32C/100 Standard Toolchain" "1.02.00" 
+[CONFIGURATIONS]
+"Debug" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\Debug" 
+"Debug_R32C_E8a_SYSTEM" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\Debug_R32C_E8a_SYSTEM" 
+"Release" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\Release" 
+[BUILD_PHASES]
+"Renesas R32C/100 Assembler" 1 
+"Renesas R32C/100 C Compiler" 1 
+"Renesas R32C/100 Configurator" 1 
+"Renesas R32C/100 Librarian" 1 
+"Renesas R32C/100 Linker" 1 
+"Renesas R32C/100 Stype Converter" 1 
+[TOOL_ENVIRONMENT]
+[EXTENSIONS]
+"Absolute file" "X30" 
+"Absolute list file" "ALS" 
+"Assembly include file" "INC" 
+"Assembly source file" "A30" 
+"Branch Information file" "JIN" 
+"C header file" "H" 
+"C source file" "C" 
+"Configuration file" "CFG" 
+"Cross reference file" "XRF" 
+"Error tag file" "TAG" 
+"Hex file" "HEX" 
+"ID file" "ID" 
+"Library file" "LIB" 
+"Linkage map file" "MAP" 
+"List file" "LST" 
+"MISRA report file" "CSV" 
+"MISRA rule file" "RDE" 
+"Preprocessed C source file" "I" 
+"Relocatable file" "R30" 
+"S-Record file" "MOT" 
+"SNI file" "SNI" 
+"Systemcall file" "MRC" 
+[FILE_GROUPS]
+"Absolute file" "BIN" "NONE" "" 
+"Absolute list file" "TEXT" "EDITOR" "" 
+"Assembly include file" "TEXT" "EDITOR" "" 
+"Assembly source file" "TEXT" "EDITOR" "" 
+"Branch Information file" "TEXT" "EDITOR" "" 
+"C header file" "TEXT" "EDITOR" "" 
+"C source file" "TEXT" "EDITOR" "" 
+"Configuration file" "TEXT" "EDITOR" "" 
+"Cross reference file" "TEXT" "EDITOR" "" 
+"Error tag file" "TEXT" "EDITOR" "" 
+"Hex file" "TEXT" "EDITOR" "" 
+"ID file" "TEXT" "EDITOR" "" 
+"Library file" "BIN" "NONE" "" 
+"Linkage map file" "TEXT" "EDITOR" "" 
+"List file" "TEXT" "EDITOR" "" 
+"MISRA report file" "TEXT" "EDITOR" "" 
+"MISRA rule file" "TEXT" "EDITOR" "" 
+"Preprocessed C source file" "TEXT" "EDITOR" "" 
+"Relocatable file" "BIN" "NONE" "" 
+"S-Record file" "TEXT" "EDITOR" "" 
+"SNI file" "TEXT" "EDITOR" "" 
+"Systemcall file" "TEXT" "EDITOR" "" 
+[ASSOCIATED_APPLICATIONS]
+[TOOLCHAIN_PHASE]
+"Renesas R32C/100 Assembler" 
+"Renesas R32C/100 C Compiler" 
+"Renesas R32C/100 Configurator" 
+"Renesas R32C/100 Librarian" 
+"Renesas R32C/100 Linker" 
+"Renesas R32C/100 Stype Converter" 
+[UTILITY_PHASE]
+[CUSTOM_PHASES]
+[CUSTOM_PHASE_INPUT_GROUP]
+[CUSTOM_PHASE_OUTPUT_SYNTAX]
+[BUILD_ORDER]
+"Renesas R32C/100 C Compiler" 1 
+"Renesas R32C/100 Assembler" 1 
+"Renesas R32C/100 Linker" 1 
+"Renesas R32C/100 Stype Converter" 1 
+"Renesas R32C/100 Librarian" 0 
+"Renesas R32C/100 Configurator" 0 
+[BUILD_PHASE_DETAILS]
+"Renesas R32C/100 Assembler" "Assembly source file" 1 
+"Renesas R32C/100 C Compiler" "C source file" 1 
+"Renesas R32C/100 Configurator" "Configuration file" 0 
+"Renesas R32C/100 Librarian" "Relocatable file" 0 
+"Renesas R32C/100 Linker" "Relocatable file" 0 
+"Renesas R32C/100 Stype Converter" "Absolute file" 0 
+[BUILD_FILE_ORDER_Assembly source file]
+"Renesas R32C/100 Assembler" 1 
+[BUILD_FILE_ORDER_C source file]
+"Renesas R32C/100 C Compiler" 1 
+[SCRAP]
+"Project Generator Setup File" "" 
+[MAPPINGS]
+"Absolute file" "Renesas R32C/100 Stype Converter" "Renesas R32C/100 Linker" 
+"Assembly source file" "Renesas R32C/100 Assembler" "Renesas R32C/100 C Compiler" 
+"Relocatable file" "Renesas R32C/100 Librarian" "Renesas R32C/100 Assembler" 
+"Relocatable file" "Renesas R32C/100 Librarian" "Renesas R32C/100 C Compiler" 
+"Relocatable file" "Renesas R32C/100 Linker" "Renesas R32C/100 Assembler" 
+"Relocatable file" "Renesas R32C/100 Linker" "Renesas R32C/100 C Compiler" 
+[PROJECT_FILES]
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\HTTPD.C" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\OLED28.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ROMFS.C" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\dhcp.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\hwsetup.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\main.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\md5.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ncrt0.a30" "User" "Assembly source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\searchfile.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\socket.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\w5100.c" "User" "C source file" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\webserver.c" "User" "C source file" 2 
+[FOLDER]
+"Assembly source file" "Assembly source file" 
+"C source file" "C source file" 
+[GENERAL_DATA_PROJECT]
+"FDT_AutoConnect" "0" 
+"FDT_BaseDevice" "" 
+"FDT_BaudRate" "" 
+"FDT_BlockLockConnect" "1" 
+"FDT_BlockLockDisconnect" "1" 
+"FDT_BootMode" "FALSE" 
+"FDT_CKM" "0" 
+"FDT_CKP" "0" 
+"FDT_ClockMode" "0" 
+"FDT_ClockSync" "00000000" 
+"FDT_Comments" "" 
+"FDT_ConnectionResetSuppression" "FFFFFFFF" 
+"FDT_Device" "" 
+"FDT_DoReadbackVerification" "No" 
+"FDT_DoSecurityProtection" "Prompt" 
+"FDT_DoSecurityProtectionLevel" "00" 
+"FDT_Frequency" "0.0000" 
+"FDT_Interface" "" 
+"FDT_InternalClock" "FALSE" 
+"FDT_KernelPath" "" 
+"FDT_KernelResident" "FALSE" 
+"FDT_McuId" "0" 
+"FDT_MessageLevel" "0" 
+"FDT_PinOutputs" "00000000" 
+"FDT_PinSettings" "00000000" 
+"FDT_Port" "" 
+"FDT_Protection" "0" 
+"FDT_Protocol" "" 
+"FDT_ReinterrogateGenericDevice" "No" 
+"FDT_ResetOnDisconnect" "No" 
+"FDT_ResetPinOutputs" "00000000" 
+"FDT_ResetPinSettings" "00000000" 
+"FDT_SerNumConfigString" "" 
+"FDT_SerNumDllFunction" "" 
+"FDT_SerNumDllLocation" "" 
+"FDT_SerNumEnabled" "FALSE" 
+"FDT_SerNumMemArea" "" 
+"FDT_UPMPinSettings" "00000000" 
+"FDT_UseDefaultBaudRate" "FALSE" 
+"FDT_UseInternalKernel" "TRUE" 
+"FDT_UserPinOutputs" "00000000" 
+"FDT_UserPinSettings" "00000000" 
+"USE_CUSTOM_LINKAGE_ORDER" "1" 
+[ON_DEMAND_COMPONENTS_LOADED]
+[SYNC_SESSION_NAMES]
+[SESSIONS]
+"DefaultSession" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\DefaultSession.hsf" 0 
+"SessionR32C_E8a_SYSTEM" "E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\SessionR32C_E8a_SYSTEM.hsf" 0 
+[GENERAL_DATA_SESSION_DefaultSession]
+[GENERAL_DATA_SESSION_SessionR32C_E8a_SYSTEM]
+[OPTIONS_Debug_Renesas R32C/100 Assembler]
+"Assembly source file" "03052a26d493ac10" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ncrt0.a30" "03052a26d493ac10" 2 
+[OPTIONS_Debug_Renesas R32C/100 C Compiler]
+"C source file" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\HTTPD.C" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\OLED28.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ROMFS.C" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\dhcp.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\hwsetup.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\main.c" "0ebb899bd493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\md5.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\searchfile.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\socket.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\w5100.c" "03052a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\webserver.c" "03052a26d493ac10" 1 
+[OPTIONS_Debug_Renesas R32C/100 Configurator]
+"Single Shot" "0ebb899bd493ac10" 6 
+[OPTIONS_Debug_Renesas R32C/100 Librarian]
+"Single Shot" "0ebb899bd493ac10" 5 
+[OPTIONS_Debug_Renesas R32C/100 Linker]
+"Single Shot" "0ec2b99bd493ac10" 3 
+[OPTIONS_Debug_Renesas R32C/100 Stype Converter]
+"Single Shot" "0ec2b99bd493ac10" 4 
+[OPTIONS_Debug]
+"" 0 
+"[V|VERSION|2] [B|COMMAND|1] [S|SPEC|UITRON4] " 6 
+"[V|VERSION|2] [B|DATALENGTH|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] " 4 
+"[V|VERSION|2] [B|STARTUPLINK|1] [B|DEBUG|1] [B|MAP-S|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).x30^"] [S|INPUTLIBRARY|^"L=nc100lib^"] " 3 
+"[V|VERSION|2] [S|LIST|LM] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [S|DEFINE|__HEAPSIZE__=0300H]   [S|DEFINE|__USTACKSIZE__=0300H] [S|DEFINE|__ISTACKSIZE__=0300H]" 2 
+"[V|VERSION|2] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 5 
+"[V|VERSION|2] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [B|INSPECTOR|1] " 1 
+[EXCLUDED_FILES_Debug]
+[LINKAGE_ORDER_Debug]
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\Debug\ncrt0.r30" 
+[GENERAL_DATA_CONFIGURATION_Debug]
+[OPTIONS_Debug_R32C_E8a_SYSTEM_Renesas R32C/100 Assembler]
+"Assembly source file" "02c79a26d493ac10" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ncrt0.a30" "02c79a26d493ac10" 2 
+[OPTIONS_Debug_R32C_E8a_SYSTEM_Renesas R32C/100 C Compiler]
+"C source file" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\HTTPD.C" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\OLED28.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ROMFS.C" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\dhcp.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\hwsetup.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\main.c" "0ebb899bd493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\md5.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\searchfile.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\socket.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\w5100.c" "02c79a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\webserver.c" "02c79a26d493ac10" 1 
+[OPTIONS_Debug_R32C_E8a_SYSTEM_Renesas R32C/100 Configurator]
+"Single Shot" "0ebb899bd493ac10" 6 
+[OPTIONS_Debug_R32C_E8a_SYSTEM_Renesas R32C/100 Librarian]
+"Single Shot" "0ebb899bd493ac10" 5 
+[OPTIONS_Debug_R32C_E8a_SYSTEM_Renesas R32C/100 Linker]
+"Single Shot" "0ec2b99bd493ac10" 3 
+[OPTIONS_Debug_R32C_E8a_SYSTEM_Renesas R32C/100 Stype Converter]
+"Single Shot" "0ec2b99bd493ac10" 4 
+[OPTIONS_Debug_R32C_E8a_SYSTEM]
+"" 0 
+"[V|VERSION|2] [B|COMMAND|1] [S|SPEC|UITRON4] " 6 
+"[V|VERSION|2] [B|DATALENGTH|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] " 4 
+"[V|VERSION|2] [B|STARTUPLINK|1] [B|DEBUG|1] [B|MAP-S|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).x30^"] [S|INPUTLIBRARY|^"L=nc100lib^"] " 3 
+"[V|VERSION|2] [S|LIST|L|M] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [S|DEFINE|__HEAPSIZE__=0300H]   [S|DEFINE|__USTACKSIZE__=0300H] [S|DEFINE|__ISTACKSIZE__=0300H]" 2 
+"[V|VERSION|2] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 5 
+"[V|VERSION|2] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [B|INSPECTOR|1] " 1 
+[EXCLUDED_FILES_Debug_R32C_E8a_SYSTEM]
+[LINKAGE_ORDER_Debug_R32C_E8a_SYSTEM]
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\Debug_R32C_E8a_SYSTEM\ncrt0.r30" 
+[GENERAL_DATA_CONFIGURATION_Debug_R32C_E8a_SYSTEM]
+[OPTIONS_Release_Renesas R32C/100 Assembler]
+"Assembly source file" "02a94a26d493ac10" 2 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ncrt0.a30" "02a94a26d493ac10" 2 
+[OPTIONS_Release_Renesas R32C/100 C Compiler]
+"C source file" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\HTTPD.C" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\OLED28.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\ROMFS.C" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\dhcp.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\hwsetup.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\main.c" "0ebb899bd493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\md5.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\searchfile.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\socket.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\w5100.c" "02a94a26d493ac10" 1 
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\webserver.c" "02a94a26d493ac10" 1 
+[OPTIONS_Release_Renesas R32C/100 Configurator]
+"Single Shot" "0ebb899bd493ac10" 6 
+[OPTIONS_Release_Renesas R32C/100 Librarian]
+"Single Shot" "0ebb899bd493ac10" 5 
+[OPTIONS_Release_Renesas R32C/100 Linker]
+"Single Shot" "0ec2b99bd493ac10" 3 
+[OPTIONS_Release_Renesas R32C/100 Stype Converter]
+"Single Shot" "0ec2b99bd493ac10" 4 
+[OPTIONS_Release]
+"" 0 
+"[V|VERSION|2] [B|COMMAND|1] [S|SPEC|UITRON4] " 6 
+"[V|VERSION|2] [B|DATALENGTH|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] " 4 
+"[V|VERSION|2] [B|STARTUPLINK|1] [B|DEBUG|1] [B|MAP-S|1] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).x30^"] [S|INPUTLIBRARY|^"L=nc100lib^"] " 3 
+"[V|VERSION|2] [S|LIST|L|M] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [S|DEFINE|__HEAPSIZE__=0300H]   [S|DEFINE|__USTACKSIZE__=0300H] [S|DEFINE|__ISTACKSIZE__=0300H]" 2 
+"[V|VERSION|2] [S|MODE|CREATE|] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"] " 5 
+"[V|VERSION|2] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).r30^"] [B|INSPECTOR|1] " 1 
+[EXCLUDED_FILES_Release]
+[LINKAGE_ORDER_Release]
+"E:\repository\09xxxx\090928 R32c webserver\firmware\V130\Webserver\Release\ncrt0.r30" 
+[GENERAL_DATA_CONFIGURATION_Release]
+[GENERAL_DATA_CONFIGURATION_SESSION_Debug_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Debug_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Debug_SessionR32C_E8a_SYSTEM]
+[SESSION_DATA_CONFIGURATION_SESSION_Debug_SessionR32C_E8a_SYSTEM]
+"MEMORY_MAPPING_OPTIONS" "Unknown Options" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Debug_R32C_E8a_SYSTEM_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Debug_R32C_E8a_SYSTEM_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Debug_R32C_E8a_SYSTEM_SessionR32C_E8a_SYSTEM]
+[SESSION_DATA_CONFIGURATION_SESSION_Debug_R32C_E8a_SYSTEM_SessionR32C_E8a_SYSTEM]
+"MEMORY_MAPPING_OPTIONS" "Unknown Options" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Release_DefaultSession]
+[SESSION_DATA_CONFIGURATION_SESSION_Release_DefaultSession]
+"MEMORY_MAPPING_OPTIONS" "" 
+[GENERAL_DATA_CONFIGURATION_SESSION_Release_SessionR32C_E8a_SYSTEM]
+[SESSION_DATA_CONFIGURATION_SESSION_Release_SessionR32C_E8a_SYSTEM]
+"MEMORY_MAPPING_OPTIONS" "Unknown Options" 
+[EXT_DEBUGGER_INFO]
+0 "" "" "" "" 
+[END]

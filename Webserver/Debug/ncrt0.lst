@@ -1,0 +1,298 @@
+* R32C/100 SERIES ASSEMBLER *  SOURCE LIST     Sat Sep 19 18:11:18 2009  PAGE 001
+
+  SEQ.  LOC.      OBJ.                     0XMSDA  ........SOURCE STATEMENT....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+     1                                             ;***********************************************************************;
+     2                                             ;
+     3                                             ;  C COMPILER for R32C/100
+     4                                             ;  Copyright(C) 2005. Renesas Technology Corp.
+     5                                             ;  and Renesas Solutions Corp., All rights reserved.
+     6                                             ;
+     7                                             ;  ncrt0.a30 : startup program 
+     8                                             ; 
+     9                                             ;  This program is applicable when using the basic I/O library 
+    10                                             ;
+    11                                             ;  $Date: 2006/02/08 01:31:39 $
+    12                                             ;  $Revision: 1.19 $
+    13                                             ;
+    14                                             ;***********************************************************************;
+    15                                             
+    16                                             ;---------------------------------------------------------------------
+    17                                             ; HEEP SIZE definition
+    18                                             ;---------------------------------------------------------------------
+    19                                             .if __HEAP__ == 1		; for HEW
+    20                                             .else
+    21                                             .if __HEAPSIZE__ == 0
+    22                                             .else				; for HEW
+    23                                             
+    24  00000300h                                  HEAPSIZE	.equ	__HEAPSIZE__
+    25                                             
+    26                                             .endif
+    27                                             .endif
+    28                                             
+    29                                             ;---------------------------------------------------------------------
+    30                                             ; STACK SIZE definition
+    31                                             ;---------------------------------------------------------------------
+    32                                             .if __USTACKSIZE__ == 0
+    33                                             .else				; for HEW
+    34                                             
+    35  00000300h                                  STACKSIZE	.equ	__USTACKSIZE__
+    36                                             
+    37                                             .endif
+    38                                             
+    39                                             ;---------------------------------------------------------------------
+    40                                             ; INTERRUPT STACK SIZE definition
+    41                                             ;---------------------------------------------------------------------
+    42                                             .if __ISTACKSIZE__ == 0
+    43                                             .else				; for HEW
+    44                                             
+    45  00000300h                                  ISTACKSIZE	.equ	__ISTACKSIZE__
+    46                                             
+    47                                             .endif
+    48                                             
+    49                                             ;---------------------------------------------------------------------
+    50                                             ; INTERRUPT VECTOR ADDRESS  definition
+    51                                             ;---------------------------------------------------------------------
+    52  FFFFFBDCh                                  VECTOR_ADR 	.equ	0FFFFFBDCH
+    53                                             
+    54                                             ;---------------------------------------------------------------------
+    55                                             ; Section allocation
+    56                                             ;---------------------------------------------------------------------
+    57                                             	.list OFF
+    58                                             	.list ON
+    59                                             
+    60                                             ;-----------------------------------------------------------------------;
+    61                                             ; SB AREA DEFINITION                                                    ;
+    62                                             ;-----------------------------------------------------------------------;
+* R32C/100 SERIES ASSEMBLER *  SOURCE LIST     Sat Sep 19 18:11:18 2009  PAGE 002
+
+  SEQ.  LOC.      OBJ.                     0XMSDA  ........SOURCE STATEMENT....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+    63                                             	.glb		__SB__
+    64  00000400h                                  __SB__	.equ		data_SB8_top
+    65                                             ;-----------------------------------------------------------------------;
+    66                                             ; INITIALIZE MACRO DEFINITION                                           ;
+    67                                             ;-----------------------------------------------------------------------;
+    68                                       D     BZERO	.macro		TOP_,SECT_
+    69                                       D     	mov.b		#00H,R0L
+    70                                       D     	mov.l		#TOP_,A1
+    71                                       D     	mov.l		#sizeof SECT_,R7R5
+    72                                       D     	sstr.b
+    73                                             	.endm
+    74                                       D     BCOPY	.macro		FROM_,TO_,SECT_
+    75                                       D     	mov.l		#FROM_,A0
+    76                                       D     	mov.l		#TO_,A1
+    77                                       D     	mov.l		#sizeof SECT_,R7R5
+    78                                       D     	smovf.b
+    79                                             	.endm
+    80                                             ;-----------------------------------------------------------------------;
+    81                                             ; INTERRUPT SECTION                                                     ;
+    82                                             ;-----------------------------------------------------------------------;
+    83                                             	.insf		start, S, 0
+    84                                             	.glb		start
+    85                                             	.section	interrupt, code, align
+    86  00000000                                   start:
+    87                                             	;-------------------------------------------------------;
+    88                                             	; after reset, this program will start                  ;
+    89                                             	;-------------------------------------------------------;
+    90  00000000  3FEAAC00000000r                  	ldc		#istack_top,ISP		; istack pointer
+    91  00000007  3FEA688000                       	ldc		#0080H,FLG			; switch to usp
+    92  0000000C  3FEA8C00000000r                  	ldc		#stack_top,SP		; stack pointer
+    93  00000013  3FEAE80004                       	ldc		#data_SB8_top,SB	; sb register
+    94  00000018  4D88                             	fset		b
+    95  0000001A  3FEAE80004                       	ldc		#data_SB8_top,SB	; bsb register
+    96  0000001F  4C88                             	fclr		b
+    97  00000021  3FEA28DCFB                       	ldc		#VECTOR_ADR,INTB	; vector address
+    98                                             	;-------------------------------------------------------;
+    99                                             	; zero clear BSS                                        ;
+   100                                             	;-------------------------------------------------------;
+   101                                             	BZERO		bss_SB8_top,  bss_SB8
+   102  00000026  10                         M Z   	mov.b		#00H,R0L
+   103  00000027  B2AC00000000r              M     	mov.l		#bss_SB8_top,A1
+   104  0000002D  B26C00000000r              M     	mov.l		#sizeof bss_SB8,R7R5
+   105  00000033  D408                       M     	sstr.b
+   106                                       M     	.endm
+   107                                             ;	BZERO		bss_SB16_top, bss_SB16
+   108                                             	BZERO		bss_NEAR_top, bss_NEAR
+   109  00000035  10                         M Z   	mov.b		#00H,R0L
+   110  00000036  B2AC00000000r              M     	mov.l		#bss_NEAR_top,A1
+   111  0000003C  B26C00000000r              M     	mov.l		#sizeof bss_NEAR,R7R5
+   112  00000042  D408                       M     	sstr.b
+   113                                       M     	.endm
+   114                                             	BZERO		bss_FAR_top,  bss_FAR
+   115  00000044  10                         M Z   	mov.b		#00H,R0L
+   116  00000045  B2AC00000000r              M     	mov.l		#bss_FAR_top,A1
+   117  0000004B  B26C00000000r              M     	mov.l		#sizeof bss_FAR,R7R5
+   118  00000051  D408                       M     	sstr.b
+   119                                       M     	.endm
+   120                                             	BZERO		bss_EXT_top,  bss_EXT
+   121  00000053  10                         M Z   	mov.b		#00H,R0L
+   122  00000054  B2AC00000000r              M     	mov.l		#bss_EXT_top,A1
+   123  0000005A  B26C00000000r              M     	mov.l		#sizeof bss_EXT,R7R5
+   124  00000060  D408                       M     	sstr.b
+* R32C/100 SERIES ASSEMBLER *  SOURCE LIST     Sat Sep 19 18:11:18 2009  PAGE 003
+
+  SEQ.  LOC.      OBJ.                     0XMSDA  ........SOURCE STATEMENT....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+   125                                       M     	.endm
+   126                                             	BZERO		bss_MON1_top, bss_MON1
+   127  00000062  10                         M Z   	mov.b		#00H,R0L
+   128  00000063  B2AC00000000r              M     	mov.l		#bss_MON1_top,A1
+   129  00000069  B26C00000000r              M     	mov.l		#sizeof bss_MON1,R7R5
+   130  0000006F  D408                       M     	sstr.b
+   131                                       M     	.endm
+   132                                             	BZERO		bss_MON2_top, bss_MON2
+   133  00000071  10                         M Z   	mov.b		#00H,R0L
+   134  00000072  B2AC00000000r              M     	mov.l		#bss_MON2_top,A1
+   135  00000078  B26C00000000r              M     	mov.l		#sizeof bss_MON2,R7R5
+   136  0000007E  D408                       M     	sstr.b
+   137                                       M     	.endm
+   138                                             	BZERO		bss_MON3_top, bss_MON3
+   139  00000080  10                         M Z   	mov.b		#00H,R0L
+   140  00000081  B2AC00000000r              M     	mov.l		#bss_MON3_top,A1
+   141  00000087  B26C00000000r              M     	mov.l		#sizeof bss_MON3,R7R5
+   142  0000008D  D408                       M     	sstr.b
+   143                                       M     	.endm
+   144                                             	BZERO		bss_MON4_top, bss_MON4
+   145  0000008F  10                         M Z   	mov.b		#00H,R0L
+   146  00000090  B2AC00000000r              M     	mov.l		#bss_MON4_top,A1
+   147  00000096  B26C00000000r              M     	mov.l		#sizeof bss_MON4,R7R5
+   148  0000009C  D408                       M     	sstr.b
+   149                                       M     	.endm
+   150                                             	;-------------------------------------------------------;
+   151                                             	; initialize DATA                                       ;
+   152                                             	;-------------------------------------------------------;
+   153                                             	BCOPY		data_SB8_INIT_top,  data_SB8_top,  data_SB8
+   154  0000009E  B28C00000000r              M     	mov.l		#data_SB8_INIT_top,A0
+   155  000000A4  B2A80004                   M     	mov.l		#data_SB8_top,A1
+   156  000000A8  B26C00000000r              M     	mov.l		#sizeof data_SB8,R7R5
+   157  000000AE  C488                       M     	smovf.b
+   158                                       M     	.endm
+   159                                             ;	BCOPY		data_SB16_INIT_top, data_SB16_top, data_SB16
+   160                                             	BCOPY		data_NEAR_INIT_top, data_NEAR_top, data_NEAR
+   161  000000B0  B28C0010FDFF               M     	mov.l		#data_NEAR_INIT_top,A0
+   162  000000B6  B2AC00000000r              M     	mov.l		#data_NEAR_top,A1
+   163  000000BC  B26C00000000r              M     	mov.l		#sizeof data_NEAR,R7R5
+   164  000000C2  C488                       M     	smovf.b
+   165                                       M     	.endm
+   166                                             	BCOPY		data_FAR_INIT_top,  data_FAR_top,  data_FAR
+   167  000000C4  B28C00000000r              M     	mov.l		#data_FAR_INIT_top,A0
+   168  000000CA  B2AC00000000r              M     	mov.l		#data_FAR_top,A1
+   169  000000D0  B26C00000000r              M     	mov.l		#sizeof data_FAR,R7R5
+   170  000000D6  C488                       M     	smovf.b
+   171                                       M     	.endm
+   172                                             	BCOPY		data_EXT_INIT_top,  data_EXT_top,  data_EXT
+   173  000000D8  B28C000000FF               M     	mov.l		#data_EXT_INIT_top,A0
+   174  000000DE  B2AC00008000               M     	mov.l		#data_EXT_top,A1
+   175  000000E4  B26C00000000r              M     	mov.l		#sizeof data_EXT,R7R5
+   176  000000EA  C488                       M     	smovf.b
+   177                                       M     	.endm
+   178                                             	BCOPY		data_MON1_INIT_top, data_MON1_top, data_MON1
+   179  000000EC  B28C00000000r              M     	mov.l		#data_MON1_INIT_top,A0
+   180  000000F2  B2AC00000000r              M     	mov.l		#data_MON1_top,A1
+   181  000000F8  B26C00000000r              M     	mov.l		#sizeof data_MON1,R7R5
+   182  000000FE  C488                       M     	smovf.b
+   183                                       M     	.endm
+   184                                             	BCOPY		data_MON2_INIT_top, data_MON2_top, data_MON2
+   185  00000100  B28C00000000r              M     	mov.l		#data_MON2_INIT_top,A0
+   186  00000106  B2AC00000000r              M     	mov.l		#data_MON2_top,A1
+* R32C/100 SERIES ASSEMBLER *  SOURCE LIST     Sat Sep 19 18:11:18 2009  PAGE 004
+
+  SEQ.  LOC.      OBJ.                     0XMSDA  ........SOURCE STATEMENT....8....*....9....*....0....*....1....*....2....*....3....*....4....*....5....*....6....*....7....*....8....*....9....*....0
+
+   187  0000010C  B26C00000000r              M     	mov.l		#sizeof data_MON2,R7R5
+   188  00000112  C488                       M     	smovf.b
+   189                                       M     	.endm
+   190                                             	BCOPY		data_MON3_INIT_top, data_MON3_top, data_MON3
+   191  00000114  B28C00000000r              M     	mov.l		#data_MON3_INIT_top,A0
+   192  0000011A  B2AC00000000r              M     	mov.l		#data_MON3_top,A1
+   193  00000120  B26C00000000r              M     	mov.l		#sizeof data_MON3,R7R5
+   194  00000126  C488                       M     	smovf.b
+   195                                       M     	.endm
+   196                                             	BCOPY		data_MON4_INIT_top, data_MON4_top, data_MON4
+   197  00000128  B28C00000000r              M     	mov.l		#data_MON4_INIT_top,A0
+   198  0000012E  B2AC00000000r              M     	mov.l		#data_MON4_top,A1
+   199  00000134  B26C00000000r              M     	mov.l		#sizeof data_MON4,R7R5
+   200  0000013A  C488                       M     	smovf.b
+   201                                       M     	.endm
+   202                                             	;-------------------------------------------------------;
+   203                                             	; initialize heap manager                               ;
+   204                                             	;-------------------------------------------------------;
+   205                                             .if __HEAP__ != 1
+   206                                             	.glb		__mnext
+   207                                             	.glb		__msize
+   208  0000013C  B66C000000r00000000r             	mov.l		#heap_top,__mnext
+   209  00000145  B668000000r0003                  	mov.l		#HEAPSIZE,__msize
+   210                                             .endif
+   211                                             	;-------------------------------------------------------;
+   212                                             	; initialize standard I/O                               ;
+   213                                             	;-------------------------------------------------------;
+   214                                             .if __STANDARD_IO__ == 1
+   215                                             .endif
+   216                                             	;-------------------------------------------------------;
+   217                                             	; invoke main() function                                ;
+   218                                             	;-------------------------------------------------------;
+   219  0000014C  3FE9C800                         	ldc		#0H,FB	; for DEBUGGER
+   220                                             	.glb		_main
+   221  00000150  FB000000r                    A   	jsr.a		_main
+   222                                             	;-------------------------------------------------------;
+   223                                             	; exit() function                                       ;
+   224                                             	;-------------------------------------------------------;
+   225                                             	.glb		_exit
+   226                                             	.glb		$exit
+   227  00000154                                   _exit:				; End of execution
+   228  00000154                                   $exit:
+   229  00000154  73FF                         B   	jmp		_exit
+   230                                             	.einsf
+   231                                             	;-------------------------------------------------------;
+   232                                             	; dummy interrupt function                              ;
+   233                                             	;-------------------------------------------------------;
+   234                                             	.glb		dummy_int
+   235  00000156                                   dummy_int:
+   236  00000156  CF                               	reit
+   237                                             	.end
+
+Information List
+
+TOTAL ERROR(S)    00000
+TOTAL WARNING(S)  00000
+TOTAL LINE(S)     00237   LINES
+
+Section List
+
+Attr         Size           Name
+DATA     00000000(000000H)  data_SB8
+DATA     00000000(000000H)  bss_SB8
+DATA     00000000(000000H)  data_NEAR
+DATA     00000000(000000H)  bss_NEAR
+DATA     00000000(000000H)  data_MON1
+DATA     00000000(000000H)  bss_MON1
+DATA     00000000(000000H)  data_MON2
+DATA     00000000(000000H)  bss_MON2
+DATA     00000000(000000H)  data_MON3
+DATA     00000000(000000H)  bss_MON3
+DATA     00000000(000000H)  data_MON4
+DATA     00000000(000000H)  bss_MON4
+DATA     00001536(000600H)  stack
+DATA     00000768(000300H)  heap
+DATA     00000000(000000H)  data_FAR
+DATA     00000000(000000H)  bss_FAR
+DATA     00000000(000000H)  data_EXT
+DATA     00000000(000000H)  bss_EXT
+ROMDATA  00000000(000000H)  data_EXT_INIT
+ROMDATA  00000000(000000H)  rom_EXT
+CODE     00000000(000000H)  program_EXT
+ROMDATA  00000000(000000H)  rom_FAR
+ROMDATA  00000000(000000H)  data_NEAR_INIT
+ROMDATA  00000000(000000H)  data_MON1_INIT
+ROMDATA  00000000(000000H)  data_MON2_INIT
+ROMDATA  00000000(000000H)  data_MON3_INIT
+ROMDATA  00000000(000000H)  data_MON4_INIT
+ROMDATA  00000000(000000H)  data_SB8_INIT
+ROMDATA  00000000(000000H)  data_FAR_INIT
+ROMDATA  00000000(000000H)  switch_table
+CODE     00000000(000000H)  program
+CODE     00000000(000000H)  interrupt
+ROMDATA  00001024(000400H)  vector
+ROMDATA  00000036(000024H)  fvector
+CODE     00000343(000157H)  interrupt

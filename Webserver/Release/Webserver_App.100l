@@ -1,0 +1,16 @@
+-L "nc100lib"
+-G
+-MS
+-O "C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\Webserver_App.x30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\ncrt0.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\dhcp.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\HTTPD.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\hwsetup.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\main.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\md5.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\OLED28.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\ROMFS.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\searchfile.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\socket.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\w5100.r30"
+"C:\Eigene Dateien\projects\elektor\2009-06_elektor R32C_jow\2009-09-17_webserver\Webserver\Release\webserver.r30"

@@ -1,0 +1,5 @@
+Project name : Webserver_App
+
+1.01.00 of Renesas R32C/100 Standard Toolchain was upgraded to
+    1.02.00 of Renesas R32C/100 Standard Toolchain.
+

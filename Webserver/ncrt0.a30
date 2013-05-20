@@ -1,0 +1,178 @@
+;***********************************************************************;
+;
+;  C COMPILER for R32C/100
+;  Copyright(C) 2005. Renesas Technology Corp.
+;  and Renesas Solutions Corp., All rights reserved.
+;
+;  ncrt0.a30 : startup program 
+; 
+;  This program is applicable when using the basic I/O library 
+;
+;  $Date: 2006/02/08 01:31:39 $
+;  $Revision: 1.19 $
+;
+;***********************************************************************;
+
+;---------------------------------------------------------------------
+; HEEP SIZE definition
+;---------------------------------------------------------------------
+.if __HEAP__ == 1		; for HEW
+
+HEAPSIZE	.equ	0h
+
+.else
+.if __HEAPSIZE__ == 0
+
+HEAPSIZE	.equ	300h
+
+.else				; for HEW
+
+HEAPSIZE	.equ	__HEAPSIZE__
+
+.endif
+.endif
+
+;---------------------------------------------------------------------
+; STACK SIZE definition
+;---------------------------------------------------------------------
+.if __USTACKSIZE__ == 0
+
+STACKSIZE	.equ	300h
+
+.else				; for HEW
+
+STACKSIZE	.equ	__USTACKSIZE__
+
+.endif
+
+;---------------------------------------------------------------------
+; INTERRUPT STACK SIZE definition
+;---------------------------------------------------------------------
+.if __ISTACKSIZE__ == 0
+
+ISTACKSIZE	.equ	300h
+
+.else				; for HEW
+
+ISTACKSIZE	.equ	__ISTACKSIZE__
+
+.endif
+
+;---------------------------------------------------------------------
+; INTERRUPT VECTOR ADDRESS  definition
+;---------------------------------------------------------------------
+VECTOR_ADR 	.equ	0FFFFFBDCH
+
+;---------------------------------------------------------------------
+; Section allocation
+;---------------------------------------------------------------------
+	.list OFF
+	.include sect100.inc
+	.list ON
+
+;-----------------------------------------------------------------------;
+; SB AREA DEFINITION                                                    ;
+;-----------------------------------------------------------------------;
+	.glb		__SB__
+__SB__	.equ		data_SB8_top
+;-----------------------------------------------------------------------;
+; INITIALIZE MACRO DEFINITION                                           ;
+;-----------------------------------------------------------------------;
+BZERO	.macro		TOP_,SECT_
+	mov.b		#00H,R0L
+	mov.l		#TOP_,A1
+	mov.l		#sizeof SECT_,R7R5
+	sstr.b
+	.endm
+BCOPY	.macro		FROM_,TO_,SECT_
+	mov.l		#FROM_,A0
+	mov.l		#TO_,A1
+	mov.l		#sizeof SECT_,R7R5
+	smovf.b
+	.endm
+;-----------------------------------------------------------------------;
+; INTERRUPT SECTION                                                     ;
+;-----------------------------------------------------------------------;
+	.insf		start, S, 0
+	.glb		start
+	.section	interrupt, code, align
+start:
+	;-------------------------------------------------------;
+	; after reset, this program will start                  ;
+	;-------------------------------------------------------;
+	ldc		#istack_top,ISP		; istack pointer
+	ldc		#0080H,FLG			; switch to usp
+	ldc		#stack_top,SP		; stack pointer
+	ldc		#data_SB8_top,SB	; sb register
+	fset		b
+	ldc		#data_SB8_top,SB	; bsb register
+	fclr		b
+	ldc		#VECTOR_ADR,INTB	; vector address
+	;-------------------------------------------------------;
+	; zero clear BSS                                        ;
+	;-------------------------------------------------------;
+	BZERO		bss_SB8_top,  bss_SB8
+;	BZERO		bss_SB16_top, bss_SB16
+	BZERO		bss_NEAR_top, bss_NEAR
+	BZERO		bss_FAR_top,  bss_FAR
+	BZERO		bss_EXT_top,  bss_EXT
+	BZERO		bss_MON1_top, bss_MON1
+	BZERO		bss_MON2_top, bss_MON2
+	BZERO		bss_MON3_top, bss_MON3
+	BZERO		bss_MON4_top, bss_MON4
+	;-------------------------------------------------------;
+	; initialize DATA                                       ;
+	;-------------------------------------------------------;
+	BCOPY		data_SB8_INIT_top,  data_SB8_top,  data_SB8
+;	BCOPY		data_SB16_INIT_top, data_SB16_top, data_SB16
+	BCOPY		data_NEAR_INIT_top, data_NEAR_top, data_NEAR
+	BCOPY		data_FAR_INIT_top,  data_FAR_top,  data_FAR
+	BCOPY		data_EXT_INIT_top,  data_EXT_top,  data_EXT
+	BCOPY		data_MON1_INIT_top, data_MON1_top, data_MON1
+	BCOPY		data_MON2_INIT_top, data_MON2_top, data_MON2
+	BCOPY		data_MON3_INIT_top, data_MON3_top, data_MON3
+	BCOPY		data_MON4_INIT_top, data_MON4_top, data_MON4
+	;-------------------------------------------------------;
+	; initialize heap manager                               ;
+	;-------------------------------------------------------;
+.if __HEAP__ != 1
+	.glb		__mnext
+	.glb		__msize
+	mov.l		#heap_top,__mnext
+	mov.l		#HEAPSIZE,__msize
+.endif
+	;-------------------------------------------------------;
+	; initialize standard I/O                               ;
+	;-------------------------------------------------------;
+.if __STANDARD_IO__ == 1
+	.glb		__init
+	.call		__init,G
+	jsr.a		__init
+.endif
+	;-------------------------------------------------------;
+	; invoke main() function                                ;
+	;-------------------------------------------------------;
+	ldc		#0H,FB	; for DEBUGGER
+	.glb		_main
+	jsr.a		_main
+	;-------------------------------------------------------;
+	; exit() function                                       ;
+	;-------------------------------------------------------;
+	.glb		_exit
+	.glb		$exit
+_exit:				; End of execution
+$exit:
+	jmp		_exit
+	.einsf
+	;-------------------------------------------------------;
+	; dummy interrupt function                              ;
+	;-------------------------------------------------------;
+	.glb		dummy_int
+dummy_int:
+	reit
+	.end
+;***********************************************************************;
+;                                                                       ;
+;       End of R32C/100 start up                                        ;
+;                                                                       ;
+;***********************************************************************;
